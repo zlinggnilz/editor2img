@@ -10,12 +10,68 @@
   <link rel="stylesheet" href="/editor2img/static/bootstrap.min.css" />
   <link rel="stylesheet" href="/editor2img/static/select2.min.css" />
   <link rel="stylesheet" href="/editor2img/static/style.css" />
+  <style>
+    .loading {
+      text-align: center;
+      padding: 32px 0;
+    }
+
+    .lds-ring {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+
+    .lds-ring div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 4px solid #ccc;
+      border-radius: 50%;
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: #ccc transparent transparent transparent;
+    }
+
+    .lds-ring div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+
+    .lds-ring div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+
+    .lds-ring div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+
+    @keyframes lds-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <h2 class="text-center mt-3">Editor to Image</h2>
-  <div class="text-12 text-center pb-3">生成的图片若商用，需保证其中使用的字体和图片没有版权问题。<br/> If the generated image is for commercial use, it should be ensured that the fonts and images used in it have no copyright issues.</div>
-  <div class="main">
+  <h2 class="text-center mt-4">Editor to Image</h2>
+  <div class="text-12 text-center pb-4">生成的图片若商用，需保证其中使用的字体和图片没有版权问题。<br /> If the generated image is for commercial
+    use, it should be ensured that the fonts and images used in it have no copyright issues.</div>
+  <div class="loading">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="main" style="display: none;">
     <div class="block">
       <div class="wrap">
         <div style="border: 1px solid #ccc">
@@ -62,7 +118,7 @@
     </div>
 
     <div id="preview-image-wrap" class="block">
-      <div class='h3 wrap'>图片 <span style="font-size:14px;"> 保存图片时需手动将格式 <code>jfif</code> 改为 <code>jpeg</code>, 如
+      <div class='h3 wrap'>图片 <span style="font-size:14px;"> 在图片上右键可保存。保存图片时需手动将格式 <code>jfif</code> 改为 <code>jpeg</code>, 如
           <code>aa.jfif</code> 改为 <code>aa.jpg</code> 保存</span></div>
       <div id="preview-image" class='text-center'></div>
       <div class="wrap text-center">
@@ -98,7 +154,7 @@
 
     <div id="split-img" class="block">
       <div class="wrap">
-        <div class='h3'>切片 <span style="font-size:14px;"> 保存图片时需手动将格式 <code>jfif</code> 改为 <code>jpeg</code>, 如
+        <div class='h3'>切片 <span style="font-size:14px;"> 在图片上右键可保存。保存图片时需手动将格式 <code>jfif</code> 改为 <code>jpeg</code>, 如
             <code>aa.jfif</code> 改为 <code>aa.jpg</code> 保存</span></div>
         <div id="split-splits" class="flex flex-wrap align-items-start"></div>
       </div>
@@ -129,6 +185,15 @@
   <script src="/editor2img/static/select2.min.js"></script>
   <script src="/editor2img/static/settings.js"></script>
   <script src="/editor2img/static/main.js"></script>
+
+  <script>
+    window.onload = function () {
+      var l = document.querySelector('.loading')
+      document.body.removeChild(l);
+      document.querySelector('.main').removeAttribute('style')
+      clear()
+    }
+  </script>
 
 </body>
 

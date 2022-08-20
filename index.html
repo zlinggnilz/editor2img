@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔷Editor2Img</title>
+  <link rel="stylesheet" href="/editor2img/static/editor.css" />
+  <link rel="stylesheet" href="/editor2img/static/bootstrap.min.css" />
+  <link rel="stylesheet" href="/editor2img/static/select2.min.css" />
+  <link rel="stylesheet" href="/editor2img/static/style.css" />
+</head>
+
+<body>
+  <h2 class="text-center mt-3">Editor to Image</h2>
+  <div class="text-12 text-center pb-3">生成的图片若商用，需保证其中使用的字体和图片没有版权问题。<br/> If the generated image is for commercial use, it should be ensured that the fonts and images used in it have no copyright issues.</div>
+  <div class="main">
+    <div class="block">
+      <div class="wrap">
+        <div style="border: 1px solid #ccc">
+          <div id="editor-toolbar" style="border-bottom: 1px solid #ccc"></div>
+          <div id="editor-text-area" style="height: 500px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-block block">
+      <div id="preview-setting">
+        <div class="wrap flex align-items-center justify-content-between">
+          <div class="h3 mb-0 flex-fill">预览</div>
+          <div class="ms-4 me-4">
+            <span class="d-block">模板</span>
+            <select id="templateSelect" style="width:100px;">
+              <option value="basic" selected>基础</option>
+              <option value="with-border">边框</option>
+              <option value="with-title">标题</option>
+            </select>
+          </div>
+          <div class="ps-2 flex flex-wrap align-items-center setting-items">
+            <div class="ms-3">预览宽度
+              <input data-name="preview-width" value="750" type="number" min="0" max="2000" step="1"
+                class="form-control form-control-sm" style="width:76px;" />
+            </div>
+            <div class="ms-3">生成图片宽度
+              <input id="setting-img-width" value="1080" type="number" min="0" max="2000" step="1"
+                class="form-control form-control-sm" style="width:76px;" />
+            </div>
+          </div>
+        </div>
+        <div id="setting-wrap" class="wrap flex align-items-center justify-content-center flex-wrap setting-items">
+        </div>
+      </div>
+
+
+      <div id="preview-wrap" class="mx-auto overflow-hidden">
+        <div id="preview"></div>
+      </div>
+      <div class="wrap text-center">
+        <button id="createImgBtn" class="w-25 btn btn-outline-primary mt-1">生成图片</button>
+      </div>
+    </div>
+
+    <div id="preview-image-wrap" class="block">
+      <div class='h3 wrap'>图片 <span style="font-size:14px;"> 保存图片时需手动将格式 <code>jfif</code> 改为 <code>jpeg</code>, 如
+          <code>aa.jfif</code> 改为 <code>aa.jpg</code> 保存</span></div>
+      <div id="preview-image" class='text-center'></div>
+      <div class="wrap text-center">
+        <button id="splitImgBtn" class="w-25 btn btn-outline-success mt-1">长图切片</button>
+      </div>
+    </div>
+
+    <div id="preview-split-wrap" class="hide block">
+      <div class="wrap flex align-items-center justify-content-between">
+        <div class="h3">切片预览</div>
+        <div class="flex align-items-center">
+          <div class="ms-2">
+            切片数 <select id="split-select" class="form-select form-select-sm d-inline-block" style="width:80px;">
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="ms-2 flex align-items-center">
+            切片高度
+            <div id="split-input-wrap"></div>
+          </div>
+        </div>
+      </div>
+      <div id="split-wrap">
+        <div id="split-div-wrap">
+          <div id="split-div" class="mx-auto" style="transform: scale(0.4);transform-origin:center top;"></div>
+        </div>
+        <div class="wrap text-center"><button id="createSplitBtn" class="w-25 btn btn-primary">生成切片</button></div>
+      </div>
+    </div>
+
+    <div id="split-img" class="block">
+      <div class="wrap">
+        <div class='h3'>切片 <span style="font-size:14px;"> 保存图片时需手动将格式 <code>jfif</code> 改为 <code>jpeg</code>, 如
+            <code>aa.jfif</code> 改为 <code>aa.jpg</code> 保存</span></div>
+        <div id="split-splits" class="flex flex-wrap align-items-start"></div>
+      </div>
+    </div>
+  </div>
+
+  <datalist id="colors">
+    <option label="白色">#ffffff</option>
+    <option label="浅灰">#fdfdfd</option>
+    <option label="灰色1">#e3eaef</option>
+    <option label="灰色2">#dddddd</option>
+    <option label="灰色3">#6c757d</option>
+    <option label="蓝色1">#0dcaf0</option>
+    <option label="蓝色2">#36bcfe</option>
+    <option label="绿色1">#20c997</option>
+    <option label="绿色2">#198754</option>
+    <option label="黄色">#ffc107</option>
+    <option label="橘色">#fd7e14</option>
+    <option label="红色1">#d63384</option>
+    <option label="红色2">#dc3545</option>
+    <option label="红色3">#C00000</option>
+    <option label="黑色">#000000</option>
+  </datalist>
+
+  <script src="/editor2img/static/jquery.min.js"></script>
+  <script src="/editor2img/static/html2canvas.min.js"></script>
+  <script src="/editor2img/static/editor.js"></script>
+  <script src="/editor2img/static/select2.min.js"></script>
+  <script src="/editor2img/static/settings.js"></script>
+  <script src="/editor2img/static/main.js"></script>
+
+</body>
+
+</html>

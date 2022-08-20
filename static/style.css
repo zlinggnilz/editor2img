@@ -19,6 +19,7 @@ li{ margin-bottom: 1em;}
 .main {
   /* overflow: hidden; */
   padding-bottom: 40px;
+  min-width: 860px;
 }
 
 .hide {
@@ -56,6 +57,7 @@ input[type='number'] {
 
 .wrap {
   width: 1000px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 10px 0;
 }

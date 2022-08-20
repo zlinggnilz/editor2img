@@ -110,7 +110,6 @@ $(function () {
     });
     insertSplit();
     $("#preview-split-wrap").show();
-    // $("#split-wrap").show();
 
     scroll2Top("#splitImgBtn");
   });
@@ -284,9 +283,9 @@ function clear(type = "all") {
 function scroll2Top(selector) {
   blurActive();
   document.querySelector(selector).scrollIntoView({
-    // behavior: "instant",
+    behavior: "instant",
     block: "start",
-    // inline: "start",
+    inline: "start",
   });
 }
 

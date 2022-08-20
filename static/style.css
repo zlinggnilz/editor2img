@@ -17,9 +17,8 @@ ul {
 }
 li{ margin-bottom: 1em;}
 .main {
-  overflow: hidden;
+  /* overflow: hidden; */
   padding-bottom: 40px;
-  /* padding: 10px 20px 40px 20px; */
 }
 
 .hide {
@@ -74,8 +73,7 @@ input[type='number'] {
 }
 
 .block {
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 16px;
 }
 
 .block:nth-child(2n+1) {

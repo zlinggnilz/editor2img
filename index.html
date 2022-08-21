@@ -9,53 +9,57 @@
   <link rel="stylesheet" href="/editor2img/static/bootstrap.min.css" />
   <link rel="stylesheet" href="/editor2img/static/select2.min.css" />
   <link rel="stylesheet" href="/editor2img/static/style.css" />
+  <link rel="stylesheet" href="/editor2img/static/mk.css" />
   <link rel="shortcut icon" type="image/x-icon" href="/editor2img/static/img/icon.png" />
   <style>
-    .loading {
-      text-align: center;
-      padding: 32px 0;
-    }
+.loading {
+  padding: 32px 0;
+  text-align: center;
+}
 
-    .lds-ring {
-      display: inline-block;
-      position: relative;
-      width: 80px;
-      height: 80px;
-    }
+.lds-ring {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
 
-    .lds-ring div {
-      box-sizing: border-box;
-      display: block;
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      border: 4px solid #ccc;
-      border-radius: 50%;
-      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-      border-color: #ccc transparent transparent transparent;
-    }
+.lds-ring div {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border: 4px solid #ccc;
+  border-color: #ccc transparent transparent transparent;
+  border-radius: 50%;
+}
 
-    .lds-ring div:nth-child(1) {
-      animation-delay: -0.45s;
-    }
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
 
-    .lds-ring div:nth-child(2) {
-      animation-delay: -0.3s;
-    }
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
 
-    .lds-ring div:nth-child(3) {
-      animation-delay: -0.15s;
-    }
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
 
-    @keyframes lds-ring {
-      0% {
-        transform: rotate(0deg);
-      }
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
 
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
   </style>
 </head>
 
@@ -79,7 +83,7 @@
       <div class="wrap">
         <div style="border: 1px solid #ccc">
           <div id="editor-toolbar" style="border-bottom: 1px solid #ccc"></div>
-          <div id="editor-text-area" style="height: 500px"></div>
+          <div id="editor-text-area" class="mk" style="height: 500px"></div>
         </div>
       </div>
     </div>
@@ -112,7 +116,7 @@
       </div>
 
 
-      <div id="preview-wrap" class="mx-auto overflow-hidden">
+      <div id="preview-wrap" class="mx-auto overflow-hidden mk">
         <div id="preview"></div>
       </div>
       <div class="wrap text-center">

@@ -62,6 +62,7 @@ $(function () {
   settingTemplateSet();
 
   $("#templateSelect").on("change", function () {
+    clear("all");
     settingTemplateSet();
   });
 
@@ -249,7 +250,7 @@ function getSplitImg() {
     cx.drawImage(img, 0, -dy, imgWidth, imgHeight);
     var blobUrl = await blobPromise(canvasSplit, "image/jpeg", 0.9);
     splitBlobArr.push(blobUrl);
-    $("#split-splits").append(`<div class="split-span me-4 mb-4"><img src='${blobUrl}' width="300" /></div>`);
+    $("#split-splits").append(`<div class="split-span1 me-4 mb-4"><img src='${blobUrl}' width="300" /></div>`);
     if (index < splitNum - 1) {
       index++;
       handle();
@@ -272,7 +273,7 @@ function clear(type = "all") {
     $("#preview-split-wrap, #split-img, #preview-image-wrap").hide();
   } else if (type === "splitPreview") {
     $("#split-div").html("");
-    $("#preview-split-wrap, #split-img, #preview-image-wrap").hide();
+    $("#preview-split-wrap, #split-img").hide();
     $("#split-splits").html("");
   } else if (type === "split") {
     $("#split-img").hide();

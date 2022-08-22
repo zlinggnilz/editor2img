@@ -56,7 +56,7 @@ var settings = {
 };
 
 var settingHtml = {
-  basic: `<div id="preview"></div>`,
-  "with-border": `<div id="preview"></div>`,
-  "with-title": `<div id="preview-title"></div><div id="preview"></div>`,
+  basic: `<div id="preview" class="mk"></div>`,
+  "with-border": `<div id="preview" class="mk"></div>`,
+  "with-title": `<div id="preview-title"></div><div id="preview" class="mk"></div>`,
 };

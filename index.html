@@ -12,54 +12,51 @@
   <link rel="stylesheet" href="/editor2img/static/mk.css" />
   <link rel="shortcut icon" type="image/x-icon" href="/editor2img/static/img/icon.png" />
   <style>
-.loading {
-  padding: 32px 0;
-  text-align: center;
-}
+    .loading {
+      padding: 32px 0;
+      text-align: center;
+    }
 
-.lds-ring {
-  position: relative;
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-}
+    .lds-ring {
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+    }
 
-.lds-ring div {
-  position: absolute;
-  display: block;
-  box-sizing: border-box;
-  width: 60px;
-  height: 60px;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border: 4px solid #ccc;
-  border-color: #ccc transparent transparent transparent;
-  border-radius: 50%;
-}
+    .lds-ring div {
+      position: absolute;
+      display: block;
+      box-sizing: border-box;
+      width: 60px;
+      height: 60px;
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border: 4px solid #ccc;
+      border-color: #ccc transparent transparent transparent;
+      border-radius: 50%;
+    }
 
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
+    .lds-ring div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
 
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
+    .lds-ring div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
 
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
+    .lds-ring div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
 
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
+    @keyframes lds-ring {
+      0% {
+        transform: rotate(0deg);
+      }
 
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
-
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 
@@ -88,84 +85,142 @@
       </div>
     </div>
 
-    <div class="preview-block block">
-      <div id="preview-setting">
-        <div class="wrap flex align-items-center justify-content-between">
-          <div class="h3 mb-0 flex-fill">预览</div>
-          <div class="ms-4 me-4">
-            <span class="d-block">模板</span>
-            <select id="templateSelect" style="width:100px;">
-              <option value="basic" selected>基础</option>
-              <option value="with-border">边框</option>
-              <option value="with-title">标题</option>
-            </select>
-          </div>
-          <div class="ps-2 flex flex-wrap align-items-center setting-items">
-            <div class="ms-3">预览宽度
-              <input data-name="preview-width" value="750" type="number" min="0" max="2000" step="1"
-                class="form-control form-control-sm" style="width:76px;" />
+    <div id="tabBtnWrap" class="block text-center">
+      <button class="btn btn-outline-secondary btn-lg me-5" target="#toImgWrap" data-type="image">For Image</button>
+      <button class="btn btn-secondary btn-lg" target="#toHtmlWrap" data-type="outlook">For OutLook</button>
+    </div>
+
+    <div>
+      <div id="toHtmlWrap" class="tab-pane">
+        <div class="preview-block block">
+          <div id="preview-html-setting">
+            <div class="preview-setting">
+              <div class="wrap flex align-items-center justify-content-between">
+                <div class="h3 mb-0 flex-fill">预览</div>
+                <div class="ms-4 me-4">
+                  <span class="d-block">模板</span>
+                  <select class="templateSelect" style="width:100px;">
+                    <option value="o-basic" selected>基础</option>
+                    <option value="o-title">标题1</option>
+                    <option value="o-full-title">标题2</option>
+                  </select>
+                </div>
+                <div class="ps-2 flex flex-wrap align-items-center setting-items">
+                  <div class="ms-3">内容宽度
+                    <input data-name="width" target="#preview-html-content" value="650" type="number" min="0" max="2000"
+                      step="1" class="form-control form-control-sm" style="width:76px;" />
+                  </div>
+                </div>
+              </div>
+              <div class="setting-wrap wrap flex align-items-center justify-content-center flex-wrap setting-items">
+              </div>
             </div>
-            <div class="ms-3">生成图片宽度
-              <input id="setting-img-width" value="1080" type="number" min="0" max="2000" step="1"
-                class="form-control form-control-sm" style="width:76px;" />
+          </div>
+
+          <div id="preview-html-container">
+
+          </div>
+
+          <div class="wrap text-center mt-2">
+            <button id="downloadHtml" class="w-25 btn btn-outline-primary mt-1">下载HTML</button>
+          </div>
+
+        </div>
+
+        <div class="usage-block block">
+          <div class="wrap">
+            <h3>使用</h3>
+            <ul>
+              <li>Outlook 新建邮件，快捷工具栏选择添加附件</li>
+              <li>找到 Html 文件位置后，插入时，选择“插入为文本”</li>
+            </ul>
+            <strong style="color:red;">注意：在富文本插入的图片在邮件中无效，图片请在邮件编辑中插入</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="toImgWrap" class="tab-pane hide">
+        <div class="preview-block block">
+          <div class="preview-setting">
+            <div class="wrap flex align-items-center justify-content-between">
+              <div class="h3 mb-0 flex-fill">预览</div>
+              <div class="ms-4 me-4">
+                <span class="d-block">模板</span>
+                <select class="templateSelect" style="width:100px;">
+                  <option value="basic" selected>基础</option>
+                  <option value="with-border">边框</option>
+                  <option value="with-title">标题</option>
+                </select>
+              </div>
+              <div class="ps-2 flex flex-wrap align-items-center setting-items">
+                <div class="ms-3">预览宽度
+                  <input data-name="preview-width" value="750" type="number" min="0" max="2000" step="1"
+                    class="form-control form-control-sm" style="width:76px;" />
+                </div>
+                <div class="ms-3">生成图片宽度
+                  <input id="setting-img-width" value="1080" type="number" min="0" max="2000" step="1"
+                    class="form-control form-control-sm" style="width:76px;" />
+                </div>
+              </div>
+            </div>
+            <div class="setting-wrap wrap flex align-items-center justify-content-center flex-wrap setting-items">
             </div>
           </div>
-        </div>
-        <div id="setting-wrap" class="wrap flex align-items-center justify-content-center flex-wrap setting-items">
-        </div>
-      </div>
 
-
-      <div id="preview-wrap" class="mx-auto overflow-hidden">
-        <div id="preview" class="mk"></div>
-      </div>
-      <div class="wrap text-center">
-        <button id="createImgBtn" class="w-25 btn btn-outline-primary mt-1">生成图片</button>
-      </div>
-    </div>
-
-    <div id="preview-image-wrap" class="block">
-      <div class='h3 wrap'>图片 <span style="font-size:14px;"> 在图片上右键可保存。保存图片时需手动将格式 <code>jfif</code> 改为
-          <code>jpeg</code>, 如
-          <code>aa.jfif</code> 改为 <code>aa.jpg</code> 保存</span></div>
-      <div id="preview-image" class='text-center'></div>
-      <div class="wrap text-center">
-        <button id="splitImgBtn" class="w-25 btn btn-outline-success mt-1">长图切片</button>
-      </div>
-    </div>
-
-    <div id="preview-split-wrap" class="hide block">
-      <div class="wrap flex align-items-center justify-content-between">
-        <div class="h3">切片预览</div>
-        <div class="flex align-items-center">
-          <div class="ms-2">
-            切片数 <select id="split-select" class="form-select form-select-sm d-inline-block" style="width:80px;">
-              <option value="2" selected>2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+          <div id="preview-wrap" class="mx-auto overflow-hidden">
+            <div id="preview" class="mk"></div>
           </div>
-          <div class="ms-2 flex align-items-center">
-            切片高度
-            <div id="split-input-wrap"></div>
+          <div class="wrap text-center">
+            <button id="createImgBtn" class="w-25 btn btn-outline-primary mt-1">生成图片</button>
           </div>
         </div>
-      </div>
-      <div id="split-wrap">
-        <div id="split-div-wrap">
-          <div id="split-div" class="mx-auto" style="transform: scale(0.4);transform-origin:center top;"></div>
-        </div>
-        <div class="wrap text-center"><button id="createSplitBtn" class="w-25 btn btn-primary">生成切片</button></div>
-      </div>
-    </div>
 
-    <div id="split-img" class="block">
-      <div class="wrap">
-        <div class='h3'>切片 <span style="font-size:14px;"> 在图片上右键可保存。保存图片时需手动将格式 <code>jfif</code> 改为 <code>jpeg</code>,
-            如
-            <code>aa.jfif</code> 改为 <code>aa.jpg</code> 保存</span></div>
-        <div id="split-splits" class="flex flex-wrap align-items-start"></div>
+        <div id="preview-image-wrap" class="block hide">
+          <div class='h3 wrap'>图片 <span style="font-size:14px;"> 在图片上右键可保存。保存图片时需手动将格式 <code>jfif</code> 改为
+              <code>jpeg</code>, 如
+              <code>aa.jfif</code> 改为 <code>aa.jpg</code> 保存</span></div>
+          <div id="preview-image" class='text-center'></div>
+          <div class="wrap text-center">
+            <button id="splitImgBtn" class="w-25 btn btn-outline-success mt-1">长图切片</button>
+          </div>
+        </div>
+
+        <div id="preview-split-wrap" class="hide block">
+          <div class="wrap flex align-items-center justify-content-between">
+            <div class="h3">切片预览</div>
+            <div class="flex align-items-center">
+              <div class="ms-2">
+                切片数 <select id="split-select" class="form-select form-select-sm d-inline-block" style="width:80px;">
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="ms-2 flex align-items-center">
+                切片高度
+                <div id="split-input-wrap"></div>
+              </div>
+            </div>
+          </div>
+          <div id="split-wrap">
+            <div id="split-div-wrap">
+              <div id="split-div" class="mx-auto" style="transform: scale(0.4);transform-origin:center top;"></div>
+            </div>
+            <div class="wrap text-center"><button id="createSplitBtn" class="w-25 btn btn-primary">生成切片</button></div>
+          </div>
+        </div>
+
+        <div id="split-img" class="block hide">
+          <div class="wrap">
+            <div class='h3'>切片 <span style="font-size:14px;"> 在图片上右键可保存。保存图片时需手动将格式 <code>jfif</code> 改为
+                <code>jpeg</code>,
+                如
+                <code>aa.jfif</code> 改为 <code>aa.jpg</code> 保存</span></div>
+            <div id="split-splits" class="flex flex-wrap align-items-start"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

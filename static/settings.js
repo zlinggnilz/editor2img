@@ -39,7 +39,7 @@ var settingItems = {
   backgroundOut_o: `背景
   <input data-name="backgroundColor" target="#preview-html-wrap" type="color" list="colors" value="#cccccc" class="color-input form-control form-control-sm d-block" />`,
   backgroundIn_o: `内容背景
-  <input data-name="backgroundColor" target="#preview-html" type="color" list="colors" value="#ffffff" class="color-input form-control form-control-sm d-block" />`,
+  <input data-name="backgroundColor" target="#preview-html-content" type="color" list="colors" value="#ffffff" class="color-input form-control form-control-sm d-block" />`,
   paddingOut_o:`外边距
   <input data-name="padding" target="#preview-html-pd" value="16" type="number" min="0" max="120" step="1" class="form-control form-control-sm" style="width:56px;" />`
 };
